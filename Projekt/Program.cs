@@ -1,1 +1,10 @@
-﻿
+﻿const int OSZLOP = 14;
+const int SOR = 11;
+const char FAL = '#';
+const char UT = 'O';
+const char START = 'S';
+const char END = 'E';
+const char BANDITA = 'b';
+const char MUMIA = 'm';
+const char KOVACS = 'K';
+const char LADA = 'L';
