@@ -9,6 +9,7 @@ const char MUMIA = 'm';
 const char KOVACS = 'K';
 const char LADA = 'L';
 char[,] terkep = new char[SOR, OSZLOP];
+TerkepBeolvasás();
 
 ConsoleKeyInfo key;
 int sor = 1;
@@ -18,9 +19,37 @@ int oszlop = 0;
 
 
 
+void TerkepBeolvasás()
+{
+    Console.Write("Válassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
 
+    string nehezseg = Console.ReadLine()!;
+    bool kivalaszva = false;
 
-void Mozgás()
+    while (!kivalaszva)
+    {
+        switch (nehezseg)
+        {
+            case "könnyű":
+            case "konnyu":
+                nehezseg = "konnyu"; kivalaszva = true; break;
+            case "normál":
+            case "normal":
+                nehezseg = "normal"; kivalaszva = true; break;
+            case "nehéz":
+            case "nehez":
+                nehezseg = "nehez"; kivalaszva = true; break;
+            default:
+                Console.Write("Nincsen ilyen nehézség! Kérjük ellenőrizze a helyesírását!\n\tVálassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
+                break;
+        }
+        if (!kivalaszva)
+        {
+            nehezseg = Console.ReadLine()!;
+        }
+    }
+
+    void Mozgas()
 {
     key = Console.ReadKey(true);
     if (key.Key == ConsoleKey.W && terkep[sor - 1, oszlop] != FAL)
