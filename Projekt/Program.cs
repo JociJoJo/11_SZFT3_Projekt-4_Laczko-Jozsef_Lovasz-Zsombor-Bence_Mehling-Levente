@@ -1,4 +1,7 @@
-﻿const int OSZLOP = 14;
+﻿using ProjektLib;
+
+Random r = new Random();
+const int OSZLOP = 14;
 const int SOR = 11;
 const char FAL = '#';
 const char UT = 'O';
@@ -15,7 +18,35 @@ ConsoleKeyInfo key;
 int sor = 1;
 int oszlop = 0;
 
+Jatekos jatekos = new Jatekos();
 
+while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
+{
+    Terkep();
+
+    switch (terkep[sor, oszlop])
+    {
+        case BANDITA:
+            Console.WriteLine("Egy bandita áll előtted!");
+            // Harc elindítása
+            break;
+        case MUMIA:
+            Console.WriteLine("Egy múmia áll előtted!");
+            break;
+        case KOVACS:
+            Console.WriteLine("Elérted a kovácst!");
+            break;
+        case LADA:
+            int lada = r.Next(4, 16) * jatekos.Szerencse;
+            Console.WriteLine($"Találtál egy ládát, amelyben {lada} talizmán lapult.");
+            jatekos.Talizmanok += lada;
+            terkep[sor, oszlop] = UT;
+            break;
+        default:
+            break;
+    }
+    Mozgas();
+}
 
 
 
@@ -49,29 +80,30 @@ void TerkepBeolvasás()
         }
     }
 
-    void Mozgas()
+}
+
+void Mozgas()
+{
+    key = Console.ReadKey(true);
+    if (key.Key == ConsoleKey.W && terkep[sor - 1, oszlop] != FAL)
     {
-        key = Console.ReadKey(true);
-        if (key.Key == ConsoleKey.W && terkep[sor - 1, oszlop] != FAL)
-        {
-            sor--;
-        }
-        else if (key.Key == ConsoleKey.S && terkep[sor + 1, oszlop] != FAL)
-        {
-            sor++;
-        }
-        else if (key.Key == ConsoleKey.A && terkep[sor, oszlop - 1] != FAL && terkep[sor, oszlop] != START)
-        {
-            oszlop--;
-        }
-        else if (key.Key == ConsoleKey.D && terkep[sor, oszlop + 1] != FAL)
-        {
-            oszlop++;
-        }
+        sor--;
+    }
+    else if (key.Key == ConsoleKey.S && terkep[sor + 1, oszlop] != FAL)
+    {
+        sor++;
+    }
+    else if (key.Key == ConsoleKey.A && terkep[sor, oszlop - 1] != FAL && terkep[sor, oszlop] != START)
+    {
+        oszlop--;
+    }
+    else if (key.Key == ConsoleKey.D && terkep[sor, oszlop + 1] != FAL)
+    {
+        oszlop++;
     }
 }
 
-void Térkép()
+void Terkep()
 {
     Console.Clear();
     for (int i = 0; i < SOR; i++)

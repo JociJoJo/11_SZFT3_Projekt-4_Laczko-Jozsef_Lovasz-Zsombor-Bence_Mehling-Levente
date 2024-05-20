@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "ProjektLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ProjektLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjektLib.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ProjektLib/1.0.0": {
+      "type": "project",
+      "path": "../ProjektLib/ProjektLib.csproj",
+      "msbuildProject": "../ProjektLib/ProjektLib.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "ProjektLib >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\kicsi\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "Q:\\JociJoJo\\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\\ProjektLib\\ProjektLib.csproj": {
+              "projectPath": "Q:\\JociJoJo\\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\\ProjektLib\\ProjektLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
