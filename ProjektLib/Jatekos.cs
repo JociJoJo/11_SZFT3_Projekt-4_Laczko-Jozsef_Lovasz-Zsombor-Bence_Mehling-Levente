@@ -8,5 +8,15 @@
         public int Szerencse { get; set; }
         public bool Ninja { get; set; }
         public bool Vadasz {  get; set; }
+
+        public Jatekos()
+        {
+            Eletero = 5;
+            Sebzes = 1;
+            Talizmanok = 0;
+            Szerencse = 1;
+            Ninja = false;
+            Vadasz = false;
+        }
     }
 }
