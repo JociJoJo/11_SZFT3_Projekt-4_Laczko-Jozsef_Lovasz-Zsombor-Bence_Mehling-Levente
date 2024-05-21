@@ -128,3 +128,7 @@ void Szerencse()
 {
     Szerencse *= 2;
 }
+void Ninja()
+{
+    Ninja = true;
+}
