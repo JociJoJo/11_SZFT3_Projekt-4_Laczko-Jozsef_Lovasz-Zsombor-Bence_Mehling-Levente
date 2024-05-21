@@ -132,3 +132,7 @@ void Ninja()
 {
     Ninja = true;
 }
+void Vadasz()
+{
+    Vadasz = true;
+}
