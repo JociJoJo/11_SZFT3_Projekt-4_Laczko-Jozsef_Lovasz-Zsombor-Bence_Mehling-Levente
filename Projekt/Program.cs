@@ -126,13 +126,13 @@ void Terkep()
 }
 void Szerencse()
 {
-    Szerencse *= 2;
+    jatekos.Szerencse *= 2;
 }
 void Ninja()
 {
-    Ninja = true;
+    jatekos.Ninja = true;
 }
 void Vadasz()
 {
-    Vadasz = true;
+    jatekos.Vadasz = true;
 }
