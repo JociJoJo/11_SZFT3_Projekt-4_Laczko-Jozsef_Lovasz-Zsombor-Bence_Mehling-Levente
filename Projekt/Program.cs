@@ -124,3 +124,7 @@ void Terkep()
         Console.WriteLine();
     }
 }
+void Szerencse()
+{
+    Szerencse *= 2;
+}
