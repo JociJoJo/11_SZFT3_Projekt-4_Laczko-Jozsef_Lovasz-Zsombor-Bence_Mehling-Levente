@@ -1,71 +1,77 @@
 ﻿using ProjektLib;
-
 Random r = new Random();
-const int OSZLOP = 14;
-const int SOR = 11;
-const char FAL = '#';
-const char UT = 'O';
-const char START = 'S';
-const char END = 'E';
-const char ELLENFEL = 'e';
-const char KOVACS = 'K';
-const char LADA = 'L';
-char[,] terkep = new char[SOR, OSZLOP];
-TerkepBeolvasas();
 
-int sor = 1;
-int oszlop = 0;
 
-Jatekos jatekos = new Jatekos();
 
-while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
+Main();
+
+void Main()
 {
-    Console.Clear();
-    for (int i = 0; i < SOR; i++)
+    const int OSZLOP = 14;
+    const int SOR = 11;
+    const char FAL = '#';
+    const char UT = 'O';
+    const char START = 'S';
+    const char END = 'E';
+    const char ELLENFEL = 'e';
+    const char KOVACS = 'K';
+    const char LADA = 'L';
+    char[,] terkep = new char[SOR, OSZLOP];
+    TerkepBeolvasas();
+
+    int sor = 1;
+    int oszlop = 0;
+
+    Jatekos jatekos = new Jatekos();
+
+    while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
     {
-        for (int j = 0; j < OSZLOP; j++)
+        Console.Clear();
+        for (int i = 0; i < SOR; i++)
         {
-            if (i == sor && j == oszlop)
+            for (int j = 0; j < OSZLOP; j++)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write($"{terkep[i, j]} ");
-                Console.ForegroundColor = ConsoleColor.White;
+                if (i == sor && j == oszlop)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write($"{terkep[i, j]} ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else
+                {
+                    Console.Write($"{terkep[i, j]} ");
+                }
             }
-            else
-            {
-                Console.Write($"{terkep[i, j]} ");
-            }
+            Console.WriteLine();
         }
-        Console.WriteLine();
-    }
 
-    switch (terkep[sor, oszlop])
-    {
-        case ELLENFEL:
-            string ellenfel = "";
-            switch (r.Next(0,1))
-            {
-                case 0: ellenfel = "bandita"; break; case 1: ellenfel = "mumia"; break;
-            }
-            Console.WriteLine($"Egy {ellenfel} áll előtted!");
-            // Harc elindítása
-            break;
-        case KOVACS:
-            Console.WriteLine("Elérted a kovácst!");
-            break;
-        case LADA:
-            int lada = r.Next(4, 16) * jatekos.Szerencse;
-            Console.WriteLine($"Találtál egy ládát, amelyben {lada} talizmán lapult.");
-            jatekos.Talizmanok += lada;
-            terkep[sor, oszlop] = UT;
-            break;
-        default:
-            break;
+        switch (terkep[sor, oszlop])
+        {
+            case ELLENFEL:
+                string ellenfel = "";
+                switch (r.Next(0, 1))
+                {
+                    case 0: ellenfel = "bandita"; break;
+                    case 1: ellenfel = "mumia"; break;
+                }
+                Console.WriteLine($"Egy {ellenfel} áll előtted!");
+                // Harc elindítása
+                break;
+            case KOVACS:
+                Console.WriteLine("Elérted a kovácst!");
+                break;
+            case LADA:
+                int lada = r.Next(4, 16) * jatekos.Szerencse;
+                Console.WriteLine($"Találtál egy ládát, amelyben {lada} talizmán lapult.");
+                jatekos.Talizmanok += lada;
+                terkep[sor, oszlop] = UT;
+                break;
+            default:
+                break;
+        }
+        jatekos.Mozgas(terkep, sor, oszlop, FAL, START);
     }
-    jatekos.Mozgas(terkep,sor,oszlop,FAL,START);
 }
-
-
 
 void TerkepBeolvasas()
 {
