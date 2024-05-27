@@ -18,5 +18,26 @@
             Ninja = false;
             Vadasz = false;
         }
+
+        public void Mozgas(ConsoleKeyInfo key, char[,] terkep, int tsor, int toszlop, char fal, char start)
+        {
+            key = Console.ReadKey(true);
+            if (key.Key == ConsoleKey.W && terkep[tsor - 1, toszlop] != fal)
+            {
+                tsor--;
+            }
+            else if (key.Key == ConsoleKey.S && terkep[tsor + 1, toszlop] != fal)
+            {
+                tsor++;
+            }
+            else if (key.Key == ConsoleKey.A && terkep[tsor, toszlop - 1] != fal && terkep[tsor, toszlop] != start)
+            {
+                toszlop--;
+            }
+            else if (key.Key == ConsoleKey.D && terkep[tsor, toszlop + 1] != fal)
+            {
+                toszlop++;
+            }
+        }
     }
 }

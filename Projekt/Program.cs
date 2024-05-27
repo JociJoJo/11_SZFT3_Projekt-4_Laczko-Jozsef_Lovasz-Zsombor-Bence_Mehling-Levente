@@ -98,24 +98,3 @@ void TerkepBeolvasás()
     }
 
 }
-
-void Mozgas()
-{
-    key = Console.ReadKey(true);
-    if (key.Key == ConsoleKey.W && terkep[sor - 1, oszlop] != FAL)
-    {
-        sor--;
-    }
-    else if (key.Key == ConsoleKey.S && terkep[sor + 1, oszlop] != FAL)
-    {
-        sor++;
-    }
-    else if (key.Key == ConsoleKey.A && terkep[sor, oszlop - 1] != FAL && terkep[sor, oszlop] != START)
-    {
-        oszlop--;
-    }
-    else if (key.Key == ConsoleKey.D && terkep[sor, oszlop + 1] != FAL)
-    {
-        oszlop++;
-    }
-}
