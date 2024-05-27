@@ -7,8 +7,7 @@ const char FAL = '#';
 const char UT = 'O';
 const char START = 'S';
 const char END = 'E';
-const char BANDITA = 'b';
-const char MUMIA = 'm';
+const char ELLENFEL = 'e';
 const char KOVACS = 'K';
 const char LADA = 'L';
 char[,] terkep = new char[SOR, OSZLOP];
@@ -42,12 +41,14 @@ while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
 
     switch (terkep[sor, oszlop])
     {
-        case BANDITA:
-            Console.WriteLine("Egy bandita áll előtted!");
+        case ELLENFEL:
+            string ellenfel = "";
+            switch (r.Next(0,1))
+            {
+                case 0: ellenfel = "bandita"; break; case 1: ellenfel = "mumia"; break;
+            }
+            Console.WriteLine($"Egy {ellenfel} áll előtted!");
             // Harc elindítása
-            break;
-        case MUMIA:
-            Console.WriteLine("Egy múmia áll előtted!");
             break;
         case KOVACS:
             Console.WriteLine("Elérted a kovácst!");
