@@ -22,7 +22,24 @@ Jatekos jatekos = new Jatekos();
 
 while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
 {
-    Terkep();
+    Console.Clear();
+    for (int i = 0; i < SOR; i++)
+    {
+        for (int j = 0; j < OSZLOP; j++)
+        {
+            if (i == sor && j == oszlop)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{terkep[i, j]} ");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.Write($"{terkep[i, j]} ");
+            }
+        }
+        Console.WriteLine();
+    }
 
     switch (terkep[sor, oszlop])
     {
@@ -100,27 +117,5 @@ void Mozgas()
     else if (key.Key == ConsoleKey.D && terkep[sor, oszlop + 1] != FAL)
     {
         oszlop++;
-    }
-}
-
-void Terkep()
-{
-    Console.Clear();
-    for (int i = 0; i < SOR; i++)
-    {
-        for (int j = 0; j < OSZLOP; j++)
-        {
-            if (i == sor && j == oszlop)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write($"{terkep[i, j]} ");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            else
-            {
-                Console.Write($"{terkep[i, j]} ");
-            }
-        }
-        Console.WriteLine();
     }
 }
