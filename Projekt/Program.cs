@@ -102,5 +102,16 @@ void TerkepBeolvasas()
             nehezseg = Console.ReadLine()!;
         }
     }
-
+void Szerencse()
+{
+    jatekos.Szerencse *= 2;
+}
+void Ninja()
+{
+    jatekos.Ninja = true;
+}
+void Vadasz()
+{
+    jatekos.Vadasz = true;
+}
 }
