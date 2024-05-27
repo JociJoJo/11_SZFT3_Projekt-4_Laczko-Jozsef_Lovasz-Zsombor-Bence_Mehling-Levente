@@ -12,9 +12,8 @@ const char MUMIA = 'm';
 const char KOVACS = 'K';
 const char LADA = 'L';
 char[,] terkep = new char[SOR, OSZLOP];
-TerkepBeolvasás();
+TerkepBeolvasas();
 
-ConsoleKeyInfo key;
 int sor = 1;
 int oszlop = 0;
 
@@ -62,12 +61,12 @@ while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
         default:
             break;
     }
-    Mozgas();
+    jatekos.Mozgas(terkep,sor,oszlop,FAL,START);
 }
 
 
 
-void TerkepBeolvasás()
+void TerkepBeolvasas()
 {
     Console.Write("Válassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
 

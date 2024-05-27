@@ -19,9 +19,9 @@
             Vadasz = false;
         }
 
-        public void Mozgas(ConsoleKeyInfo key, char[,] terkep, int tsor, int toszlop, char fal, char start)
+        public void Mozgas(char[,] terkep, int tsor, int toszlop, char fal, char start)
         {
-            key = Console.ReadKey(true);
+            ConsoleKeyInfo key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.W && terkep[tsor - 1, toszlop] != fal)
             {
                 tsor--;
