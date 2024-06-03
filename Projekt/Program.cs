@@ -1,7 +1,6 @@
 ﻿using ProjektLib;
 Random r = new Random();
-
-
+Jatekos jatekos = new Jatekos();
 
 Main();
 
@@ -17,12 +16,39 @@ void Main()
     const char KOVACS = 'K';
     const char LADA = 'L';
     char[,] terkep = new char[SOR, OSZLOP];
-    TerkepBeolvasas();
+    Console.Write("Válassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
 
-    int sor = 1;
-    int oszlop = 0;
+    string nehezseg = Console.ReadLine()!;
+    bool kivalaszva = false;
 
-    Jatekos jatekos = new Jatekos();
+    while (!kivalaszva)
+    {
+        switch (nehezseg)
+        {
+            case "könnyű":
+            case "konnyu":
+                nehezseg = "konnyu"; kivalaszva = true; break;
+            case "normál":
+            case "normal":
+                nehezseg = "normal"; kivalaszva = true; break;
+            case "nehéz":
+            case "nehez":
+                nehezseg = "nehez"; kivalaszva = true; break;
+            default:
+                Console.Write("Nincsen ilyen nehézség! Kérjük ellenőrizze a helyesírását!\n\tVálassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
+                break;
+        }
+        if (!kivalaszva)
+        {
+            nehezseg = Console.ReadLine()!;
+        }
+
+        int sor = 1;
+        int oszlop = 0;
+        int esor = 1;
+        int eosz = 0;
+
+    
 
     while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
     {
@@ -69,39 +95,9 @@ void Main()
             default:
                 break;
         }
-        jatekos.Mozgas(terkep, sor, oszlop, FAL, START);
+        jatekos.Mozgas(terkep, sor, oszlop, esor, eosz, FAL, START);
     }
 }
-
-void TerkepBeolvasas()
-{
-    Console.Write("Válassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
-
-    string nehezseg = Console.ReadLine()!;
-    bool kivalaszva = false;
-
-    while (!kivalaszva)
-    {
-        switch (nehezseg)
-        {
-            case "könnyű":
-            case "konnyu":
-                nehezseg = "konnyu"; kivalaszva = true; break;
-            case "normál":
-            case "normal":
-                nehezseg = "normal"; kivalaszva = true; break;
-            case "nehéz":
-            case "nehez":
-                nehezseg = "nehez"; kivalaszva = true; break;
-            default:
-                Console.Write("Nincsen ilyen nehézség! Kérjük ellenőrizze a helyesírását!\n\tVálassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
-                break;
-        }
-        if (!kivalaszva)
-        {
-            nehezseg = Console.ReadLine()!;
-        }
-    }
 void Szerencse()
 {
     jatekos.Szerencse *= 2;

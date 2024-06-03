@@ -19,23 +19,27 @@
             Vadasz = false;
         }
 
-        public void Mozgas(char[,] terkep, int tsor, int toszlop, char fal, char start)
+        public void Mozgas(char[,] terkep, int tsor, int toszlop, int esor, int eoszlop, char fal, char start)
         {
             ConsoleKeyInfo key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.W && terkep[tsor - 1, toszlop] != fal)
             {
+                esor = tsor;
                 tsor--;
             }
             else if (key.Key == ConsoleKey.S && terkep[tsor + 1, toszlop] != fal)
             {
+                esor = tsor;
                 tsor++;
             }
             else if (key.Key == ConsoleKey.A && terkep[tsor, toszlop - 1] != fal && terkep[tsor, toszlop] != start)
             {
+                eoszlop = toszlop;
                 toszlop--;
             }
             else if (key.Key == ConsoleKey.D && terkep[tsor, toszlop + 1] != fal)
             {
+                eoszlop = toszlop;
                 toszlop++;
             }
         }
