@@ -81,11 +81,70 @@ void Main()
                     case 1: ellenfel = "mumia"; break;
                 }
                 Console.WriteLine($"Egy {ellenfel} áll előtted!");
-                // Harc elindítása
+                    int ehp = 3;
+                    while (jatekos.Eletero != 0 || ehp != 0)
+                    {
+                        ehp -= jatekos.Sebzes;
+                        jatekos.Eletero--;
+                    }
                 break;
             case KOVACS:
-                Console.WriteLine("Elérted a kovácst!");
-                break;
+                Console.Write("Elérted a kovácst! Megnézed miket árul?(i/n) ");
+                    if (Console.ReadLine()! == "i")
+                    {
+                        Console.Clear();
+                        Console.Write("A kovács jobb páncélt (5 talizmán), erősebb fegyverzetet (5 talizmán), és különféle passzív hatásokat (20 talizmán) árul. Mit szeretnél vásárolni?(páncél/fegyver/passzív/vissza) ");
+                        switch (Console.ReadLine())
+                        {
+                            case "páncél":
+                                if (jatekos.Talizmanok >= 5)
+                                {
+                                    jatekos.Eletero++;
+                                    Console.WriteLine($"Sikeresen fejlesztetted a páncélodat, ezzel növelve életerődet! Jelenlegi életerő: {jatekos.Eletero}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Sajnos erre nincs pénzed!");
+                                }
+                                break;
+                            case "fegyver":
+                                if (jatekos.Talizmanok >= 5)
+                                {
+                                    jatekos.Sebzes++;
+                                    Console.WriteLine($"Sikeresen fejlesztetted a fegyveredet! Jelenlegi sebzés: {jatekos.Sebzes}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Sajnos erre nincs pénzed!");
+                                }
+                                break;
+                            case "passzív":
+                                if (jatekos.Talizmanok >= 20)
+                                {
+                                    Console.Write("A kovács három passziv hatást árul:\n\tSzerencse: Kétszer több talizmán ládákból\n\tNindzsa: Van esély az ütés blokkolására\n\tVadász: Van esély egyből megölni az ellenfelet\n\tMelyiket szeretnéd megvásárolni?(S/N/V/kilépés) ");
+                                    switch (Console.ReadLine())
+                                    {
+                                        case "S": Szerencse(); break;
+                                        case "N": Ninja(); break;
+                                        case "V": Vadasz(); break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Sajnos erre nincs pénzed!");
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
             case LADA:
                 int lada = r.Next(4, 16) * jatekos.Szerencse;
                 Console.WriteLine($"Találtál egy ládát, amelyben {lada} talizmán lapult.");
