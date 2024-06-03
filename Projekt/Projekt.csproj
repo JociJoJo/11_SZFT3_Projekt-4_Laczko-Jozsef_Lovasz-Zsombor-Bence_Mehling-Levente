@@ -11,4 +11,13 @@
     <ProjectReference Include="..\ProjektLib\ProjektLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="konnyu.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="nehez.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
