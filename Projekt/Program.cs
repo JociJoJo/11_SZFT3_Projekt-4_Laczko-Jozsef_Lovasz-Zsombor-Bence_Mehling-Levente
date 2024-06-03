@@ -143,6 +143,7 @@ void Main()
                 {
                     int oltal = r.Next(3, 10);
                     jatekos.Talizmanok += oltal;
+                    jatekos.Pont += 50;
                     Console.WriteLine($"A {ellenfel} le lett győzve, és volt nála {oltal} talizmán!");
                     terkep[sor, oszlop] = UT;
                 }
@@ -216,6 +217,7 @@ void Main()
                     }
             case LADA:
                 int lada = r.Next(4, 16) * jatekos.Szerencse;
+                jatekos.Pont += 20;
                 Console.WriteLine($"Találtál egy ládát, amelyben {lada} talizmán lapult.");
                 jatekos.Talizmanok += lada;
                 terkep[sor, oszlop] = UT;
@@ -228,13 +230,16 @@ void Main()
         Console.Clear();  
         if (terkep[sor,oszlop] == 'E')
         {
+            jatekos.Pont += (jatekos.Talizmanok*8)+(jatekos.Eletero*5)+(jatekos.Sebzes*5)+(jatekos.Szerencse>1? (jatekos.Szerencse-1)*20:0)+(jatekos.Vadasz? 20:0)+(jatekos.Ninja? 20:0)+250;
             Console.WriteLine($"Gratulálunk, kijutottál a labirintusból!\n\tA pontszámod: {jatekos.Pont}");
         }
         else if (jatekos.Eletero <= 0)
         {
+            jatekos.Pont += (jatekos.Talizmanok * 8) + (jatekos.Eletero * 5) + (jatekos.Sebzes * 5) + (jatekos.Szerencse > 1 ? (jatekos.Szerencse - 1) * 20 : 0) + (jatekos.Vadasz ? 20 : 0) + (jatekos.Ninja ? 20 : 0);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("Vesztettél!");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"A pontszámod: {jatekos.Pont}");
         }
 
 }
