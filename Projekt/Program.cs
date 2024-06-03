@@ -6,8 +6,8 @@ Main();
 
 void Main()
 {
-    const int OSZLOP = 14;
-    const int SOR = 11;
+    const int OSZLOP = 15;
+    const int SOR = 15;
     const char FAL = '#';
     const char UT = 'O';
     const char START = 'S';
@@ -92,21 +92,22 @@ void Main()
                     case 1: ellenfel = "mumia"; break;
                 }
                 Console.WriteLine($"Egy {ellenfel} áll előtted!");
-                    int ehp = 3;
-                    while (jatekos.Eletero != 0 || ehp != 0)
-                    {
-                        ehp -= jatekos.Sebzes;
-                        jatekos.Eletero--;
+                int ehp = 3;
+                while ((jatekos.Eletero > 0) && (ehp > 0))
+                {
+                    ehp -= jatekos.Sebzes;
+                    jatekos.Eletero--;
+                        Console.WriteLine($"{ehp}, {jatekos.Eletero}");
                     }
-                    if (jatekos.Eletero > 0)
-                    {
-                        Console.WriteLine($"A {ellenfel} le lett győzve! A jelenlegi életerőd: {jatekos.Eletero}");
-                        terkep[sor, oszlop] = '0';
-                    }
-                    else
-                    {
-                        Console.WriteLine($"A {ellenfel} legyőzőtt téged");
-                    }
+                if (jatekos.Eletero > 0)
+                {
+                    Console.WriteLine($"A {ellenfel} le lett győzve! A jelenlegi életerőd: {jatekos.Eletero}");
+                    terkep[sor, oszlop] = UT;
+                }
+                else
+                {
+                    Console.WriteLine($"A {ellenfel} legyőzőtt téged");
+                }
                 break;
             case KOVACS:
                 Console.Write("Elérted a kovácst! Megnézed miket árul?(i/n) ");

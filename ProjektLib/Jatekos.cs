@@ -10,6 +10,7 @@ namespace ProjektLib
         public int Szerencse { get; set; }
         public bool Ninja { get; set; }
         public bool Vadasz {  get; set; }
+        public int Pont { get; set; }
 
         public Jatekos()
         {
@@ -19,6 +20,7 @@ namespace ProjektLib
             Szerencse = 1;
             Ninja = false;
             Vadasz = false;
+            Pont = 0;
         }
 
         public void Mozgas(char[,] terkep, ref int tsor, ref int toszlop, ref int esor, ref int eoszlop, char fal, char start)
