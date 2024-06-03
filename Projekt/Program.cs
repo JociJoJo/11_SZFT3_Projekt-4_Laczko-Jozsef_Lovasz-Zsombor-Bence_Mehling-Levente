@@ -126,7 +126,11 @@ void Main()
                             {
                                 ehp = 0;
                             }
-                        }
+                            else
+                            {
+                                ehp -= jatekos.Sebzes;
+                            }
+                            }
                         else
                         {
                             ehp -= jatekos.Sebzes;
@@ -149,16 +153,17 @@ void Main()
                 break;
             case KOVACS:
                 Console.Write("Elérted a kovácst! Megnézed miket árul?(i/n) ");
-                    if (Console.ReadLine()! == "i")
+                    if (Console.ReadKey().Key == ConsoleKey.I)
                     {
                         Console.Clear();
-                        Console.Write("A kovács jobb páncélt (5 talizmán), erősebb fegyverzetet (5 talizmán), és különféle passzív hatásokat (20 talizmán) árul. Mit szeretnél vásárolni?(páncél/fegyver/passzív/vissza) ");
+                        Console.Write($"A kovács jobb páncélt (5 talizmán), erősebb fegyverzetet (5 talizmán), és különféle passzív hatásokat (20 talizmán) árul. Mit szeretnél vásárolni?(pan/feg/pas/vissza)\nJelenleg {jatekos.Talizmanok} talizmánod van!  ");
                         switch (Console.ReadLine())
                         {
-                            case "páncél":
+                            case "pan":
                                 if (jatekos.Talizmanok >= 5)
                                 {
                                     jatekos.Eletero++;
+                                    jatekos.Talizmanok -= 5;
                                     Console.WriteLine($"Sikeresen fejlesztetted a páncélodat, ezzel növelve életerődet! Jelenlegi életerő: {jatekos.Eletero}");
                                 }
                                 else
@@ -166,10 +171,11 @@ void Main()
                                     Console.WriteLine("Sajnos erre nincs pénzed!");
                                 }
                                 break;
-                            case "fegyver":
+                            case "feg":
                                 if (jatekos.Talizmanok >= 5)
                                 {
                                     jatekos.Sebzes++;
+                                    jatekos.Talizmanok -= 5;
                                     Console.WriteLine($"Sikeresen fejlesztetted a fegyveredet! Jelenlegi sebzés: {jatekos.Sebzes}");
                                 }
                                 else
@@ -177,15 +183,15 @@ void Main()
                                     Console.WriteLine("Sajnos erre nincs pénzed!");
                                 }
                                 break;
-                            case "passzív":
+                            case "pas":
                                 if (jatekos.Talizmanok >= 20)
                                 {
                                     Console.Write("A kovács három passziv hatást árul:\n\tSzerencse: Kétszer több talizmán ládákból\n\tNindzsa: Van esély az ütés blokkolására\n\tVadász: Van esély egyből megölni az ellenfelet\n\tMelyiket szeretnéd megvásárolni?(S/N/V/kilépés) ");
-                                    switch (Console.ReadLine())
+                                    switch (Console.ReadKey().Key)
                                     {
-                                        case "S": Szerencse(); break;
-                                        case "N": Ninja(); break;
-                                        case "V": Vadasz(); break;
+                                        case ConsoleKey.S: Szerencse(); jatekos.Talizmanok -= 20; break;
+                                        case ConsoleKey.N: Ninja(); jatekos.Talizmanok -= 20; break;
+                                        case ConsoleKey.V: Vadasz(); jatekos.Talizmanok -= 20; break;
                                         default:
                                             break;
                                     }
@@ -222,7 +228,7 @@ void Main()
         Console.Clear();  
         if (terkep[sor,oszlop] == 'E')
         {
-            Console.WriteLine($"Gratulálunk, kijutottál a labirintusból!\n\tA Pontszámod: {jatekos.Pont}");
+            Console.WriteLine($"Gratulálunk, kijutottál a labirintusból!\n\tA pontszámod: {jatekos.Pont}");
         }
         else if (jatekos.Eletero <= 0)
         {
