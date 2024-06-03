@@ -81,62 +81,65 @@ void Main()
             }
             Console.WriteLine();
         }
-
-        switch (terkep[sor, oszlop])
-        {
-            case ELLENFEL:
-                string ellenfel = "";
-                switch (r.Next(0, 1))
-                {
-                    case 0: ellenfel = "bandita"; break;
-                    case 1: ellenfel = "mumia"; break;
-                }
-                Console.WriteLine($"Egy {ellenfel} áll előtted!");
-                int ehp = 3;
-                    if (jatekos.Ninja)
+            string n = jatekos.Ninja ? "van" : "nincs";
+            string v = jatekos.Vadasz ? "van" : "nincs";
+            Console.WriteLine($"\tÉleterő: {jatekos.Eletero}\tSebzés: {jatekos.Sebzes}\tTalizmánok: {jatekos.Talizmanok}\tSzerencse: {jatekos.Szerencse}\tNindzsa: {n}\tVadász: {v}");
+            switch (terkep[sor, oszlop])
+            {
+                case ELLENFEL:
+                    string ellenfel = "";
+                    switch (r.Next(0, 1))
                     {
-                        int ved = r.Next(0,4);
+                        case 0: ellenfel = "bandita"; break;
+                        case 1: ellenfel = "mumia"; break;
+                    }
+                    Console.WriteLine($"Egy {ellenfel} áll előtted!");
+                    int ehp = 3;
+                    while ((jatekos.Eletero > 0) && (ehp > 0))
+                    {
+                        if (jatekos.Ninja)
+                    {
+                        int ved = r.Next(0, 4);
                         if (ved == 1)
                         {
-                            while ((jatekos.Eletero > 0) && (ehp > 0))
+                            if (jatekos.Vadasz)
                             {
-                                if (jatekos.Vadasz)
+                                int vad = r.Next(0, 3);
+                                if (vad == 1)
                                 {
-                                    int vad = r.Next(0, 3);
-                                    if (vad == 1)
-                                    {
-                                        ehp = 0;
-                                    }
-                                    else
-                                    {
-                                        ehp -= jatekos.Sebzes;
-                                    }
+                                    ehp = 0;
                                 }
+                            }
+                            else
+                            {
+                                ehp -= jatekos.Sebzes;
+
+                            }
+                            }
+                    }
+                    else
+                    {
+                        if (jatekos.Vadasz)
+                        {
+                            int vad = r.Next(0, 3);
+                            if (vad == 1)
+                            {
+                                ehp = 0;
                             }
                         }
                         else
                         {
-                            while ((jatekos.Eletero > 0) && (ehp > 0))
-                            {
-                                if (jatekos.Vadasz)
-                                {
-                                    int vad = r.Next(0, 3);
-                                    if (vad == 1)
-                                    {
-                                        ehp = 0;
-                                    }
-                                    else
-                                    {
-                                        ehp -= jatekos.Sebzes;
-                                    }
-                                }
-                                jatekos.Eletero--;
-                            }
+                            ehp -= jatekos.Sebzes;
                         }
+                            jatekos.Eletero--;
                     }
-                if (jatekos.Eletero > 0)
+            }
+                    
+                    if (jatekos.Eletero > 0)
                 {
-                    Console.WriteLine($"A {ellenfel} le lett győzve! A jelenlegi életerőd: {jatekos.Eletero}");
+                    int oltal = r.Next(3, 10);
+                    jatekos.Talizmanok += oltal;
+                    Console.WriteLine($"A {ellenfel} le lett győzve, és volt nála {oltal} talizmán!");
                     terkep[sor, oszlop] = UT;
                 }
                 else
