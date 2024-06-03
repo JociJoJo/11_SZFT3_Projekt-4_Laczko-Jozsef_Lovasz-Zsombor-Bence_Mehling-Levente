@@ -87,6 +87,14 @@ void Main()
                         ehp -= jatekos.Sebzes;
                         jatekos.Eletero--;
                     }
+                    if (ehp == 0)
+                    {
+                        Console.WriteLine($"A {ellenfel} le lett győzve! A jelenlegi életerőd: {jatekos.Eletero}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"A {ellenfel} legyőzőtt téged");
+                    }
                 break;
             case KOVACS:
                 Console.Write("Elérted a kovácst! Megnézed miket árul?(i/n) ");
