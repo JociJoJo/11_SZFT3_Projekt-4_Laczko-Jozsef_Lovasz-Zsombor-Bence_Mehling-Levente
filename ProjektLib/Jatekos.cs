@@ -1,4 +1,6 @@
-﻿namespace ProjektLib
+﻿using System.Globalization;
+
+namespace ProjektLib
 {
     public class Jatekos
     {
@@ -19,9 +21,10 @@
             Vadasz = false;
         }
 
-        public void Mozgas(char[,] terkep, int tsor, int toszlop, int esor, int eoszlop, char fal, char start)
+        public void Mozgas(char[,] terkep, ref int tsor, ref int toszlop, ref int esor, ref int eoszlop, char fal, char start)
         {
-            ConsoleKeyInfo key = Console.ReadKey(true);
+            ConsoleKeyInfo key;
+            key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.W && terkep[tsor - 1, toszlop] != fal)
             {
                 esor = tsor;
@@ -32,7 +35,7 @@
                 esor = tsor;
                 tsor++;
             }
-            else if (key.Key == ConsoleKey.A && terkep[tsor, toszlop - 1] != fal && terkep[tsor, toszlop] != start)
+            else if (terkep[tsor, toszlop] != start && key.Key == ConsoleKey.A && terkep[tsor, toszlop - 1] != fal)
             {
                 eoszlop = toszlop;
                 toszlop--;

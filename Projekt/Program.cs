@@ -17,7 +17,6 @@ void Main()
     const char LADA = 'L';
     char[,] terkep = new char[SOR, OSZLOP];
     Console.Write("Válassza ki a nehézségi szintet (könnyű, normál, nehéz): ");
-
     string nehezseg = Console.ReadLine()!;
     bool kivalaszva = false;
 
@@ -41,6 +40,18 @@ void Main()
         if (!kivalaszva)
         {
             nehezseg = Console.ReadLine()!;
+        }
+
+        StreamReader f = new($"{nehezseg}.txt");
+
+
+        for (int i = 0; i < SOR; i++)
+        {
+            string[] temp = f.ReadLine()!.Split(" ");
+            for (int j = 0; j < OSZLOP; j++)
+            {
+                terkep[i, j] = char.Parse(temp[j]);
+            }
         }
 
         int sor = 1;
@@ -87,9 +98,10 @@ void Main()
                         ehp -= jatekos.Sebzes;
                         jatekos.Eletero--;
                     }
-                    if (ehp == 0)
+                    if (jatekos.Eletero > 0)
                     {
                         Console.WriteLine($"A {ellenfel} le lett győzve! A jelenlegi életerőd: {jatekos.Eletero}");
+                        terkep[sor, oszlop] = '0';
                     }
                     else
                     {
@@ -147,10 +159,14 @@ void Main()
                             default:
                                 break;
                         }
+                        sor = esor;
+                        oszlop = eosz;
                         break;
                     }
                     else
                     {
+                        sor = esor;
+                        oszlop = eosz;
                         break;
                     }
             case LADA:
@@ -162,7 +178,7 @@ void Main()
             default:
                 break;
         }
-        jatekos.Mozgas(terkep, sor, oszlop, esor, eosz, FAL, START);
+        jatekos.Mozgas(terkep, ref sor,ref oszlop,ref esor,ref eosz, FAL, START);
     }
 }
 void Szerencse()

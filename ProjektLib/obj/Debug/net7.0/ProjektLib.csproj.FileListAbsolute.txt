@@ -1,0 +1,11 @@
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\bin\Debug\net7.0\ProjektLib.deps.json
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\bin\Debug\net7.0\ProjektLib.dll
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\bin\Debug\net7.0\ProjektLib.pdb
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\ProjektLib.GeneratedMSBuildEditorConfig.editorconfig
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\ProjektLib.AssemblyInfoInputs.cache
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\ProjektLib.AssemblyInfo.cs
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\ProjektLib.csproj.CoreCompileInputs.cache
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\ProjektLib.dll
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\refint\ProjektLib.dll
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\ProjektLib.pdb
+Q:\JociJoJo\11_SZFT3_Projekt-4_Laczko-Jozsef_Lovasz-Zsombor-Bence_Mehling-Levente\ProjektLib\obj\Debug\net7.0\ref\ProjektLib.dll
