@@ -219,6 +219,18 @@ void Main()
         }
         jatekos.Mozgas(terkep, ref sor,ref oszlop,ref esor,ref eosz, FAL, START);
     }
+        Console.Clear();  
+        if (terkep[sor,oszlop] == 'E')
+        {
+            Console.WriteLine($"Gratulálunk, kijutottál a labirintusból!\n\tA Pontszámod: {jatekos.Pont}");
+        }
+        else if (jatekos.Eletero <= 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Vesztettél!");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
 }
 void Szerencse()
 {
