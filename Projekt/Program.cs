@@ -83,7 +83,7 @@ void Main()
         }
             string n = jatekos.Ninja ? "van" : "nincs";
             string v = jatekos.Vadasz ? "van" : "nincs";
-            Console.WriteLine($"\tÉleterő: {jatekos.Eletero}\tSebzés: {jatekos.Sebzes}\tTalizmánok: {jatekos.Talizmanok}\tSzerencse: {jatekos.Szerencse}\tNindzsa: {n}\tVadász: {v}");
+            Console.WriteLine($"Életerő: {jatekos.Eletero}; Sebzés: {jatekos.Sebzes}; Talizmánok: {jatekos.Talizmanok}; Szerencse: {jatekos.Szerencse}; Nindzsa: {n}; Vadász: {v}");
             switch (terkep[sor, oszlop])
             {
                 case ELLENFEL:
