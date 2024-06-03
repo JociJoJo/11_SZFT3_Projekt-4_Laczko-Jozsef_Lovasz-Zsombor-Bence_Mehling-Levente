@@ -61,7 +61,7 @@ void Main()
 
     
 
-    while (terkep[sor, oszlop] != END || jatekos.Eletero > 0)
+    while (terkep[sor, oszlop] != END && jatekos.Eletero > 0)
     {
         Console.Clear();
         for (int i = 0; i < SOR; i++)
@@ -93,11 +93,46 @@ void Main()
                 }
                 Console.WriteLine($"Egy {ellenfel} áll előtted!");
                 int ehp = 3;
-                while ((jatekos.Eletero > 0) && (ehp > 0))
-                {
-                    ehp -= jatekos.Sebzes;
-                    jatekos.Eletero--;
-                        Console.WriteLine($"{ehp}, {jatekos.Eletero}");
+                    if (jatekos.Ninja)
+                    {
+                        int ved = r.Next(0,4);
+                        if (ved == 1)
+                        {
+                            while ((jatekos.Eletero > 0) && (ehp > 0))
+                            {
+                                if (jatekos.Vadasz)
+                                {
+                                    int vad = r.Next(0, 3);
+                                    if (vad == 1)
+                                    {
+                                        ehp = 0;
+                                    }
+                                    else
+                                    {
+                                        ehp -= jatekos.Sebzes;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            while ((jatekos.Eletero > 0) && (ehp > 0))
+                            {
+                                if (jatekos.Vadasz)
+                                {
+                                    int vad = r.Next(0, 3);
+                                    if (vad == 1)
+                                    {
+                                        ehp = 0;
+                                    }
+                                    else
+                                    {
+                                        ehp -= jatekos.Sebzes;
+                                    }
+                                }
+                                jatekos.Eletero--;
+                            }
+                        }
                     }
                 if (jatekos.Eletero > 0)
                 {
