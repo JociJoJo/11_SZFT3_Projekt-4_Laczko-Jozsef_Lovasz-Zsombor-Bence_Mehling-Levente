@@ -1,4 +1,4 @@
-﻿using ProjektLib;
+using ProjektLib;
 Random r = new Random();
 Jatekos jatekos = new Jatekos();
 
@@ -83,7 +83,8 @@ void Main()
         }
             string n = jatekos.Ninja ? "van" : "nincs";
             string v = jatekos.Vadasz ? "van" : "nincs";
-            Console.WriteLine($"Életerő: {jatekos.Eletero}; Sebzés: {jatekos.Sebzes}; Talizmánok: {jatekos.Talizmanok}; Szerencse: {jatekos.Szerencse}; Nindzsa: {n}; Vadász: {v}");
+            Console.WriteLine($"\nÉleterő: {jatekos.Eletero}; Sebzés: {jatekos.Sebzes}; Talizmánok: {jatekos.Talizmanok}; Szerencse: {jatekos.Szerencse}; Nindzsa: {n}; Vadász: {v}");
+            Console.WriteLine("\n\"#\"-fal\n\"O\"-út\n\"S\"-start\n\"E\"-cél\n\"e\"-ellenfél\n\"K\"-Kovács\n\"L\"-Láda");
             switch (terkep[sor, oszlop])
             {
                 case ELLENFEL:
@@ -93,6 +94,7 @@ void Main()
                         case 0: ellenfel = "bandita"; break;
                         case 1: ellenfel = "mumia"; break;
                     }
+                    Console.Clear() ;
                     Console.WriteLine($"Egy {ellenfel} áll előtted!");
                     int ehp = 3;
                     while ((jatekos.Eletero > 0) && (ehp > 0))
@@ -137,6 +139,8 @@ void Main()
                         }
                             jatekos.Eletero--;
                     }
+                        Console.WriteLine($"Az ellenfél 1-t sebzett beléd. Jelenlegi életerőd: {jatekos.Eletero}\nAz ellenfélbe {jatekos.Sebzes}-t sebeztél. Az ellenfél jelenlegi életereje: {ehp}\n");
+                        Thread.Sleep(1000);
             }
                     
                     if (jatekos.Eletero > 0)
